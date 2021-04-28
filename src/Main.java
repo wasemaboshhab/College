@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
 
 
-
         Student[] listOfStudentsInTheCourse = {
                 new Student("Wasim", "Shhab", 11111),
                 new Student("Shirley", "cohen", 22222),
@@ -26,11 +25,6 @@ public class Main {
         };
 
 
-
-
-
-
-
         Course[] ComputerSinceCourses = new Course[1];
         Course[] nursingCourses = new Course[1];
         Lecturer[] ComputerSinceLecturers = new Lecturer[1];
@@ -40,7 +34,9 @@ public class Main {
                 new Department("*1*", "Computer since", ComputerSinceCourses, ComputerSinceLecturers),
                 new Department("*2*", "Nursing", nursingCourses, nursingLecturers)
         };
-        
+
+
+
 
         int[] possibility = {1, 2, 3, 4, 5, 6};
 
@@ -51,7 +47,6 @@ public class Main {
             userDepartment = isDepartmentExist(departments.length, userDepartment);
             showPossibility(possibility);
             System.out.println(">");
-
             int actionsToPerformForA_class = scanner.nextInt();
             while (true) {
                 Scanner input = new Scanner(System.in);
@@ -72,8 +67,28 @@ public class Main {
                         isAllowToAddCourse(userDepartment, departments);
                         break;
                     case 5:
-                        System.out.println("Course Name: ");
-                        break;
+                        while (true) {
+                            Course[] currentCourses = departments[userDepartment - 1].getCourses();
+                            if (areThereCourses(currentCourses)) {
+                                System.out.println("select Course: ");
+                                departments[userDepartment - 1].printListOfCourses();
+                                int chosenCourse = isCourseExisted(userDepartment, departments);
+                                chosenCourse -= 1;
+                                printOptions();
+                                int selectedOption = input.nextInt();
+                                selectedOption = CheckCorrectnessOfChoice(selectedOption );
+                                PerformingActionsOnCourse(chosenCourse, selectedOption,currentCourses);
+                                if (selectedOption == 4) {
+                                    break;
+                                }
+
+                            }
+
+                            else {
+                                System.out.println("No courses were added for this Department");
+                            }
+                            break;
+                        }
                     case 6:
                         break;
                     default:
@@ -98,10 +113,90 @@ public class Main {
 
     }
 
+    public static void PerformingActionsOnCourse(int courseIndex, int optionNumber, Course[] currentCourses ) {
+            Scanner scanner = new Scanner(System.in);
+            switch (optionNumber) {
+                case 1:
+                    currentCourses[courseIndex].print();
+                    break;
+                case 2:
+                    currentCourses[courseIndex].setName(scanner.nextLine());
+                    break;
+                case 3:
+                    System.out.println("student Information: ");
+                    System.out.println("First Name: ");
+                    String firstName = scanner.next();
+                    System.out.println("Last Name: ");
+                    String lastName = scanner.next();
+                    System.out.println("cardNumber: ");
+                    int carNumber = scanner.nextInt();
+                    Student newStudent = new Student(firstName, lastName, carNumber);
+                    currentCourses[courseIndex].addStudent(newStudent);
+                    break;
+                case 4:
+                    break;
+
+                default:
+                    CheckCorrectnessOfChoice(optionNumber);
+                    break;
+            }
+
+
+    }
+
+
+
+
+
+
+    public static int isCourseExisted(int userDepartment, Department[] departments) {
+        Scanner scanner = new Scanner(System.in);
+        Course[] currentCourses = departments[userDepartment - 1].getCourses();
+        int chosenCourse = scanner.nextInt();
+        boolean invalidSelection = chosenCourse < 1 || chosenCourse > currentCourses.length;
+        if (invalidSelection) {
+            do {
+                System.out.println("invalid Selection: ");
+                chosenCourse = scanner.nextInt();
+                invalidSelection = chosenCourse < 1 || chosenCourse > currentCourses.length-1;
+            } while (invalidSelection);
+        }
+        return chosenCourse;
+    }
+
+    public static void printOptions() {
+        System.out.println("options: ");
+        System.out.println("[1]" + "Printing course information");
+        System.out.println("[2]" + "Renaming the course");
+        System.out.println("[3]" + "Add a student to the course");
+        System.out.println("[4]" + "Back to the previous menu");
+    }
+
+    public static boolean areThereCourses(Course[] listOfCourses) {
+        if (listOfCourses[0] != null) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public static int CheckCorrectnessOfChoice(int userSelection) {
+        Scanner scanner = new Scanner(System.in);
+        boolean invalidSelect = userSelection < 1 || userSelection > 4;
+        if ((invalidSelect)) {
+            do {
+                System.out.println("invalid Selection");
+                userSelection = scanner.nextInt();
+                invalidSelect = userSelection < 1 || userSelection > 4;
+            } while (invalidSelect);
+        }
+        return userSelection;
+    }
+
     public static void isAllowToAddCourse(int userDepartment, Department[] departments) {
         Scanner scanner = new Scanner(System.in);
 
-        if (1 < (oneLecturer(userDepartment, departments) )   ) {
+        if (1 < (oneLecturer(userDepartment, departments))) {
 
             Lecturer[] currentLecturers = departments[userDepartment - 1].getLecturers();
             System.out.println("select a Lecturer to teach the course form 1 - " + currentLecturers.length + ": ");
@@ -143,10 +238,11 @@ public class Main {
         }
 
     }
-            public static int oneLecturer(int userDepartment ,Department[] departments ) {
+
+    public static int oneLecturer(int userDepartment, Department[] departments) {
         Lecturer[] list = departments[userDepartment - 1].getLecturers();
         int countLecturer = 0;
-        for (int i = 0; i < list.length ; i++) {
+        for (int i = 0; i < list.length; i++) {
             if (list[i] != null) {
                 countLecturer++;
             }

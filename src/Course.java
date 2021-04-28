@@ -39,15 +39,15 @@ public class Course {
 
 
 
-    public void addStudentToTheCourse(Student newStudent) {
-        boolean noEmptyPlace = this.studentsInTheCourse[studentsInTheCourse.length - 1] != null;
+    public void addStudent(Student newStudent) {
+
         boolean nullAddress = this.studentsInTheCourse == null;
+
         if (nullAddress) {
             Student[] newListOfStudents = new Student[1];
             newListOfStudents[0] = newStudent;
             this.studentsInTheCourse = newListOfStudents;
-        }
-        if (noEmptyPlace) {
+        } else if (this.studentsInTheCourse[studentsInTheCourse.length - 1] != null) {
             Student[] newListOfStudents = new Student[this.studentsInTheCourse.length + 1];
             for (int i = 0; i < this.studentsInTheCourse.length; i++) {
                 newListOfStudents[i] = studentsInTheCourse[i];
@@ -59,13 +59,7 @@ public class Course {
                     break;
                 }
             }
-        } else {
-            for (int i = 0; i < this.studentsInTheCourse.length; i++) {
-                if (this.studentsInTheCourse[i] == null) {
-                    studentsInTheCourse[i] = newStudent;
-                    break;
-                }
-            }
+
         }
     }
     public void printLecturer() {

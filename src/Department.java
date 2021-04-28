@@ -49,17 +49,19 @@ public class Department {
 
 
     public void printListOfCourses() { // change to void !
-        System.out.println("            {Courses of the department}:");
-        System.out.println();
-        int counter = 1;
-        for (int i = 0; i <courses.length ; i++) {
-            Course currentCourse = courses[i];
-            if (currentCourse != null) {
-                System.out.println( counter+ ": "+ courses[i].getName());
-                counter++;
-                System.out.println();
+            System.out.println("            {Courses of the department}:");
+            System.out.println();
+            int counter = 1;
+            for (int i = 0; i <courses.length ; i++) {
+                Course currentCourse = courses[i];
+                if (currentCourse != null) {
+                    System.out.println( counter+ ": "+ courses[i].getName());
+                    counter++;
+                    System.out.println();
+                }
             }
-        }
+
+
     }
     public void printListOfLecturers() {
         int counter = 1;
