@@ -62,10 +62,6 @@ public class Course {
 
         }
     }
-    public void printLecturer() {
-        lecturer.print();
-
-    }
     public void printStudentsInCourse() {  //should print the list not return it .
         if (this.studentsInTheCourse == null) {
             System.out.println("Students have not yet been added to the course");
@@ -85,10 +81,8 @@ public class Course {
         }
     }
     public void print() {
-
-
         System.out.println();
-        System.out.println("                                    {Course Details}:");
+        System.out.println("            Course Details:");
         System.out.println("Course Name: " + this.name);
         System.out.println();
         if (this.lecturer == null ) {

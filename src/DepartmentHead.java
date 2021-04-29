@@ -21,8 +21,15 @@ public class DepartmentHead extends Lecturer {
     }
 
     public void print() {
+        setDepartmentHead(true);
+        System.out.println("Department Head Details: ");
+        System.out.println("**********************************************************************");
         super.print();
         System.out.println("Specializes in: " + this.specialty);
         System.out.println("Degree: " + this.degree);
+        System.out.println("**********************************************************************");
+        System.out.println();
     }
+
+
 }

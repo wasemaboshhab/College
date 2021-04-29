@@ -1,9 +1,6 @@
 public class Lecturer extends Person {
     private int yearsOfExperience;
-
-    public Lecturer(String firstName, String lastName) {
-        super(firstName, lastName);
-    }
+    private boolean isDepartmentHead ;
 
     public Lecturer(String firstName, String lastName, int yearsOfExperience) {
         super(firstName, lastName);
@@ -17,16 +14,41 @@ public class Lecturer extends Person {
             System.out.println("Experience: unknown" );
         return this.yearsOfExperience;
     }
+    public boolean isDepartmentHead() {
+        return isDepartmentHead;
+    }
+    public void setDepartmentHead(boolean departmentHead) {
+        isDepartmentHead = departmentHead;
+    }
+    private  void notDepartmentHead() {
+        this.isDepartmentHead = false;
+        System.out.println("Lecturer Details:");
+    }
 
     public void print() {
-        System.out.println("Lecturer Details:");
-        super.print();
-        if (this.yearsOfExperience == 0) {
-            System.out.println("Experience: unknown" );
-        }else {
-            System.out.println("Experience: " + this.yearsOfExperience + " Years");
-            System.out.println();
+        if (!(this.isDepartmentHead)) {
+            notDepartmentHead();
+            super.print();
+            if (this.yearsOfExperience == 0) {
+                System.out.println("Experience: unknown");
+            } else {
+                System.out.println("Experience: " + this.yearsOfExperience + " Years");
+                System.out.println();
+            }
+
+        } else {
+            super.print();
+            if (this.yearsOfExperience == 0) {
+                System.out.println("Experience: unknown");
+            } else {
+                System.out.println("Experience: " + this.yearsOfExperience + " Years");
+
+            }
         }
+
+
+
+
     }
 
 
