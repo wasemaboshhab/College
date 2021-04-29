@@ -8,15 +8,20 @@ public class Main {
         Course[] nursingCourses = new Course[1];
         Lecturer[] ComputerSinceLecturers = new Lecturer[1];
         Lecturer[] nursingLecturers = new Lecturer[1];
+
+
         DepartmentHead departmentHead1 = new DepartmentHead
         ("shai", "Givate", 23, "Public Opinion Communications Government and Elections", "Master's degree in software engineering");
         DepartmentHead departmentHead2 = new DepartmentHead
         ("Oren", "alizr", 1, "History", "Powers and Cold War");
 
+
         Department[] departments = {
                 new Department("098765", "Computer since", ComputerSinceCourses, ComputerSinceLecturers,departmentHead1),
                 new Department("173765", "Nursing", nursingCourses, nursingLecturers,departmentHead2)
         };
+
+
         while (true) {
             Scanner scanner = new Scanner(System.in);
             showDepartment(departments);
