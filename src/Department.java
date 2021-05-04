@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Department {
     private String name;
-    private String departmentIdNumber;
+    private int departmentIdNumber;
     private DepartmentHead departmentHead;
     private Course[] courses;
     private Lecturer[] lecturers;
 
-    public Department(String departmentIdNumber, String name, Course[] courses, Lecturer[] lecturers, DepartmentHead departmentHead) {
+    public Department(int departmentIdNumber, String name, Course[] courses, Lecturer[] lecturers, DepartmentHead departmentHead) {
         this.departmentHead = departmentHead;
         this.name = name;
         this.courses = courses;
@@ -41,10 +41,10 @@ public class Department {
     public void setCourses(Course[] courses) {
         this.courses = courses;
     }
-    public String getDepartmentIdNumber() {
+    public int getDepartmentIdNumber() {
         return departmentIdNumber;
     }
-    public void setDepartmentIdNumber(String departmentIdNumber) {
+    public void setDepartmentIdNumber(int departmentIdNumber) {
         this.departmentIdNumber = departmentIdNumber;
     }
 
@@ -71,7 +71,8 @@ public class Department {
             if (currentLecturer != null) {
                 System.out.print("    "+counter +": ");
                 this.lecturers[i].print();
-                System.out.println("=====================================");
+                System.out.println("✒✑✐ ✏ ✎✒✑✐ ✏ ✎✒✑✐ ✏ ✎✒✑✐ ✏ ✎");
+
                 counter++;
             }
         }
@@ -142,7 +143,7 @@ public class Department {
                     System.out.println();
                     courses[i].print();
                     System.out.println();
-                    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+                    System.out.println("✒✑✐ ✏ ✎✒✑✐ ✏ ✎✒✑✐ ✏ ✎✒✑✐ ✏ ✎");
                     System.out.println();
                 }
         }
