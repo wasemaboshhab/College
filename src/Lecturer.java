@@ -24,7 +24,6 @@ public class Lecturer extends Person {
         this.isDepartmentHead = false;
         System.out.println("Lecturer Details:");
     }
-
     public void print() {
         if (!(this.isDepartmentHead)) {
             notDepartmentHead();

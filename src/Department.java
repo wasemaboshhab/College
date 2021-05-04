@@ -7,9 +7,6 @@ public class Department {
     private Course[] courses;
     private Lecturer[] lecturers;
 
-
-
-
     public Department(String departmentIdNumber, String name, Course[] courses, Lecturer[] lecturers, DepartmentHead departmentHead) {
         this.departmentHead = departmentHead;
         this.name = name;
@@ -26,7 +23,6 @@ public class Department {
     public Lecturer[] getLecturers() {
         return lecturers;
     }
-
     public String getName() {
         return name;
     }
@@ -75,7 +71,6 @@ public class Department {
             if (currentLecturer != null) {
                 System.out.print("    "+counter +": ");
                 this.lecturers[i].print();
-                System.out.println();
                 System.out.println("=====================================");
                 counter++;
             }
@@ -107,8 +102,7 @@ public class Department {
         for (int i = 0; i < this.lecturers.length; i++) {
             newListOfLecturers[i] = lecturers[i];
         }
-        System.out.println();
-        System.out.println("Enter Lecturer's Name: ");
+        System.out.println("Lecturer information: ");
         System.out.println("First Name:");
         String firstName = scanner.next();
         System.out.println("Last Name: ");
@@ -119,7 +113,7 @@ public class Department {
         for (int i = 0; i < newListOfLecturers.length; i++) {
             if (newListOfLecturers[i] == null) {
                 newListOfLecturers[i] = newLecture;
-                setLecturers(newListOfLecturers);
+                this.lecturers = newListOfLecturers;
                 break;
             }
         }
@@ -135,7 +129,7 @@ public class Department {
         if (this.lecturers[0] == null) {
             System.out.println("Lecturers have not yet been added to this Department");
         } else {
-            System.out.println();
+
             printListOfLecturers();
 
         }
@@ -148,7 +142,7 @@ public class Department {
                     System.out.println();
                     courses[i].print();
                     System.out.println();
-                    System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                     System.out.println();
                 }
         }

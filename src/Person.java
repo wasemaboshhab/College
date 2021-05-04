@@ -6,7 +6,6 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
     public String getFirstName() {
         return this.firstName;
     }
@@ -19,7 +18,6 @@ public class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public void print() {
         System.out.println("Name: " + this.lastName + " " +this.firstName );
     }

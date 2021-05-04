@@ -1,18 +1,7 @@
 public class Course {
-
-
-
-
     private String name;
     private Lecturer lecturer;
     private Student[] studentsInTheCourse;
-                //constructor
-    public Course(String name, Lecturer lecturer, Student[] studentsInTheCourse) {
-        this.name = name;
-        this.lecturer = lecturer;
-        this.studentsInTheCourse = studentsInTheCourse;
-    }
-
     public Course(String name) {
         this.name = name;
     }
@@ -37,45 +26,39 @@ public class Course {
     }
 
 
-
-
     public void addStudent(Student newStudent) {
-
         boolean nullAddress = this.studentsInTheCourse == null;
-
         if (nullAddress) {
             Student[] newListOfStudents = new Student[1];
             newListOfStudents[0] = newStudent;
             this.studentsInTheCourse = newListOfStudents;
+
         } else if (this.studentsInTheCourse[studentsInTheCourse.length - 1] != null) {
             Student[] newListOfStudents = new Student[this.studentsInTheCourse.length + 1];
             for (int i = 0; i < this.studentsInTheCourse.length; i++) {
                 newListOfStudents[i] = studentsInTheCourse[i];
             }
+            newListOfStudents[this.studentsInTheCourse.length] = newStudent;
             this.studentsInTheCourse = newListOfStudents;
-            for (int i = 0; i < this.studentsInTheCourse.length; i++) {
-                if (this.studentsInTheCourse[i] == null) {
-                    studentsInTheCourse[i] = newStudent;
-                    break;
-                }
-            }
 
         }
     }
-    public void printStudentsInCourse() {  //should print the list not return it .
+    private void printStudentsInCourse() {
         if (this.studentsInTheCourse == null) {
             System.out.println("Students have not yet been added to the course");
-        }
-
-        else {
-            System.out.println("            {Students in the course} :");
+        } else {
+            System.out.println("            {Students in the course}");
+            System.out.println();
+            int counter = 1;
             for (int i = 0; i < this.studentsInTheCourse.length; i++) {
                 Student currentStudent = studentsInTheCourse[i];
                 if (currentStudent != null) {
-                    System.out.print("        ");
+                    System.out.println("        " + counter);
+                    System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-");
                     currentStudent.print();
-                    System.out.println("------------------");
                     System.out.println();
+                    System.out.println();
+                    counter++;
                 }
             }
         }
@@ -85,12 +68,7 @@ public class Course {
         System.out.println("            Course Details:");
         System.out.println("Course Name: " + this.name);
         System.out.println();
-        if (this.lecturer == null ) {
-            System.out.println("There is currently no lecturer for this course!!");
-            System.out.println();
-        }
-        else{ lecturer.print();}
-
+         lecturer.print();
             printStudentsInCourse();
 
 
